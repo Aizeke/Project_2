@@ -1,3 +1,5 @@
+// apiRoutes.js - this file offers a set of routes for displaying and saving data to the db
+
 var db = require("../models");
 
 module.exports = function(app) {
