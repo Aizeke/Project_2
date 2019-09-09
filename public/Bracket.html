@@ -14,8 +14,33 @@
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">Elimination Test</h1>
-            <div id="elimination"></div>
+            <!-- <div id="elimination"></div> -->
         </div>
+    </div>
+
+    <div class="jumbotron createBracket row">
+        <div class="buttons">
+            <h1 id="tournamentName"></h1>
+            <!-- <button type="button" id="SEBtn" class="btn btn-dark">Single Elimination</button>
+            <button type="button" id="DEBtn" class="btn btn-dark">Double Elimination</button> -->
+        </div>
+
+        
+        <div class="mt-3 col-md-8" id="display-bracket-type"></div>
+
+        <div class="col-md-4" id="display-form">
+
+            <input class="form-control" type="text" placeholder="Team / Player Name">
+            <input class="btn btn-primary submitBracket" type="submit" value="Submit">
+        </div>
+
+    </div>
+
+    <div class="jumbotron displayInfo">
+        <ul class="list-group">
+            <li class="list-group-item">Info</li>
+            <li class="list-group-item">Prize</li>
+        </ul>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"

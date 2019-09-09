@@ -7,14 +7,47 @@ module.exports = function (sequelize, DataTypes) {
           len: [1]
         }
       },
+      bracketType: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len:[1],
+          isIn: [
+            ['doubleElimination', 'singleElimination']
+          ]
+        }
+      },
+      gameInfo: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }
+      },
+      location: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validate: {
+          len: [1]
+        }
+      },
       teamNames: {
+        type: DataTypes.JSON,
+        allowNull: false
+      },
+      scores: {
         type: DataTypes.JSON,
         allowNull: false
       }
     });
   
-    // Work to associate the bracket to the model.User, with foreginKey.
-
-
+    Bracket.associate = function (models) {
+      Bracket.belongsTo(models.User, {
+        foreignKey: {
+          allowNull:false
+        }
+      });
+    };
+    
     return Bracket;
   };  

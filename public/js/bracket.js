@@ -1,43 +1,86 @@
-var saveData = {
-  teams: [
-    ["Team 1", "Team 2"],
-    ["Team 3", null],
-    ["Team 4", null],
-    ["Team 5", null]
-  ],
-  results: [
-      [
-        [[1, 0], [null, null], [null, null], [null, null]],
-        [[null, null], [1, 4]],
-        [[null, null], [null, null]]
-      ]
-  ]
-};
- 
-/* Called whenever bracket is modified
- *
- * data:     changed bracket object in format given to init
- * userData: optional data given when bracket is created.
- */
-function saveFn(data, userData) {
-  var json = jQuery.toJSON(data)
-  $('#saveOutput').text('POST '+userData+' '+json)
-  /* You probably want to do something like this
-  jQuery.ajax("rest/"+userData, {contentType: 'application/json',
-                                dataType: 'json',
-                                type: 'post',
-                                data: json})
-  */
-}
- 
-$(function() {
-    var container = $('elimination')
-    container.bracket({
-      init: saveData,
-      save: saveFn,
-      userData: "http://myapi"})
- 
-    /* You can also inquiry the current data */
-    var data = container.bracket('data')
-    $('#elimination').text(jQuery.toJSON(data))
+
+$(document).ready(function () {
+
+  var input = '<input class="form-control" type="text" placeholder="Input Team Name: "></input>';
+  $("#teamName").html(input);
+
+  // // Display Single Elimination Bracket
+  // $("#SEBtn").on("click", function () {
+
+  //   displaySingleElimination();
+  // })
+
+  // // Display Double Elimination Bracket
+  // $("#DEBtn").on("click", function () {
+
+  //   displayDoubleElimination();
+  // })
+
+  // Submit Form
+  $("submitBracket").on("click", function () {
+
+
+    
   })
+})
+
+var populateArr = function() {
+
+  var data = {
+    teams: [
+      // First Match
+      [null, null],
+      [null, null],
+      [null, null],
+      [null, null],
+      [null, null],
+      [null, null],
+      [null, null],
+      [null, null]
+    ],
+    results: [
+      [
+        [
+          // Round 1
+          [null, null],
+          [null, null],
+          [null, null],
+          [null, null],
+          [null, null],
+          [null, null],
+          [null, null],
+          [null, null]
+        ],
+        // Round 2
+        [
+          [null, null],
+          [null, null],
+          [null, null],
+          [null, null]
+        ],
+        // Round 3
+        [
+          [null, null],
+          [null, null]
+        ],
+        // Round 4
+        [
+          [null, null]
+        ]
+      ]
+    ]
+  };
+
+  var team = data.teams;
+
+  for (var i = 0; i < team.length; i++) {
+    for (var j = 0; j < team[i].length; j++){
+
+      team[i] = "Team " + (i + 1);
+
+    }
+  }
+
+  
+
+}
