@@ -31,7 +31,7 @@ function saveFn(data, userData) {
 }
  
 $(function() {
-    var container = $('elimination')
+    var container = $('#elimination')
     container.bracket({
       init: saveData,
       save: saveFn,
