@@ -1,11 +1,21 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
+var session = require("express-session");
 
 var db = require("./models");
 
 var app = express();
-var PORT = process.env.PORT || 3000;
+
+const TWO_HOURS = 1000 * 60 * 60 * 2;
+
+const {
+  PORT = 3000,
+
+  SESS_NAME = 'sid',
+  SESS_LIFTIME = TWO_HOURS,
+  SESS_SECRET = 'leaguebestgame'
+} = process.env;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -21,6 +31,29 @@ app.engine(
 );
 
 app.set("view engine", "handlebars");
+
+// ===========================================================================
+// ===========================================================================
+
+app.use(session({
+  name: SESS_NAME,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: SESS_LIFTIME,
+    sameSite: true,
+    secure: false
+  },
+  secret: SESS_SECRET
+}));
+
+// ===========================================================================
+// ===========================================================================
+ 
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+  sess.cookie.secure = true // serve secure cookies
+}
 
 // Routes
 require("./routes/apiRoutes")(app);

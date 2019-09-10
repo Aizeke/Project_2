@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "%I_Met_The_Devil_In_Miami%",
-    "database": "brackets_db",
+    "password": null,
+    "database": "tournamentBracket_db",
     "host": "localhost",
     "dialect": "mysql"
   },
