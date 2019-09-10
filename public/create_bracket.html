@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Bracket</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./styles/styles.css" />
+</head>
+
+<body id="coolBackground">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="./home.html">Home <span
+                            class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" id="createBracket" href="./Bracket.html">Create Bracket</a>
+                    <a class="nav-item nav-link" id="loginPopup" href="./login.html">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="col-md-6">
+        <div class="container">
+            <!-- <div class="jumbotron">
+                <h1 class="display-4">CREATE NEW BRACKET</h1>
+                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
+                    attention
+                    to featured content or information.</p>
+                <hr class="my-4">
+                <p>It uses utility classes for typography and spacing to space content out within the larger container.
+                </p>
+                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            </div> -->
+            <h4></h4>
+            <form>
+                <div class="form-group">
+                    <label for="tourneyName">Tournament Name</label>
+                    <input type="text" class="form-control" id="tourneyName" placeholder="Enter a name">
+                </div>
+                <div class="form-group">
+                    <label for="tourneyDate">Date</label>
+                    <input type="text" class="form-control" id="tourneyDate" placeholder="00-00-20XX">
+                </div>
+                <div class="form-group">
+                    <label for="tourneyType">Tournament Type</label>
+                    <select class="form-control" id="tourneyType">
+                        <option>Single Elimination</option>
+                        <option>Double Elimination</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gameType">Select a game</label>
+                    <select class="form-control" id="gameType">
+                        <option>Street Fighter V</option>
+                        <option>Super Smash Bros. Ultimate</option>
+                        <option>CRinge of legends</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="tourneyDescription">Brief description of your event</label>
+                    <textarea class="form-control" id="tourneyDescription" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.bracket.js"></script>
+    <script src="./js/bracket.js"></script>
+</body>
+
+</html>
