@@ -49,7 +49,7 @@ module.exports = function (app) {
       teamNames: teamNames,
       scores: scores,
       // Send users sessions usingid
-      UserId: userId
+      userId: userId
     }).then(function (dbResponse) {
       console.log(dbResponse);
       res.json(dbResponse.dataValues.id);

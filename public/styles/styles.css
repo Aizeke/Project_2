@@ -2,6 +2,13 @@ h5 {
   text-align: center;
 }
 
+body {
+  background: #272a33;
+  font-family: 'Muli', sans-serif;
+  font-weight: 700;
+  color: white;
+}
+
 #smashBruddas {
   height: 200px;
   width: auto;
@@ -11,7 +18,18 @@ h5 {
   background-image: url(../assets/images/SFV_Logo.png);
   background-repeat: no-repeat;
   background-size: auto;
+  background-position: 50%;
   /* background-image: linear-gradient(black, white); */
+}
+
+#header4 {
+  font-size: 50px;
+  font-weight: bolder;
+  opacity: 1;
+}
+
+#navbarNavAltMarkup {
+  margin-left: 70%;
 }
 
 .caroosel {
@@ -27,4 +45,23 @@ h5 {
 
 .list-group-item {
   line-height: 2.5;
+}
+
+.createB {
+  margin: 5px;
+  margin-top: 10px;
+  padding: 90px;
+  background: #3c404e;
+  color: white;
+  opacity: 0.9;
+}
+
+.form-group {
+  font-size: 20px;
+  font-weight: 700;
+  opacity: 1;
+}
+
+.modal {
+  color: black;
 }
