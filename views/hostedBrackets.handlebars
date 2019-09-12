@@ -3,7 +3,13 @@
         <div class="container createB">
             <h4 id="header4">{{displayName}}'s Brackets</h4>
             <div class="freshlyMadeBracket">
-                
+                <div class="card dynamicCard">
+                    <div class="card-body">
+                        <h5 class="card-text">{{this.dataValues.bracketName}}</h5>
+                        <p class="card-text">This bracket is a {{this.dataValues.bracketType}}</p>
+                        <a href="/api/bracket/{{this.dataValues.id}}" class="btn btn-primary">Link to bracket</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
