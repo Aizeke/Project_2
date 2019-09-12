@@ -9,10 +9,7 @@ body {
   color: white;
 }
 
-#card-text {
-  color: #272a33;
-  font-size: 20px;
-}
+
 
 #smashBruddas {
   height: 200px;
@@ -35,6 +32,20 @@ body {
 
 #navbarNavAltMarkup {
   margin-left: 70%;
+}
+
+.dynamicCard{
+  
+}
+
+.card-body {
+  color: #272a33;
+  font-size: 20px;
+  
+}
+
+.card-text {
+  color: #272a33;
 }
 
 .caroosel {

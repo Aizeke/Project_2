@@ -1,0 +1,55 @@
+<div class="warning">
+</div>
+
+<form>
+  <div class="form-group">
+    <label for="Email1">Name</label>
+    <input type="text" class="form-control" id="personalName" aria-describedby="emailHelp" placeholder="">
+    <small id="emailHelp" class="form-text text-muted">Enter name</small>
+  </div>
+  <div class="form-group">
+    <label for="Email1">Gamertag</label>
+    <input type="email" class="form-control" id="gamerName" aria-describedby="emailHelp" placeholder="">
+    <small id="emailHelp" class="form-text text-muted">Enter your desired gamertag</small>
+  </div>
+
+  <div class="form-group">
+    <label for="Password1">Password</label>
+    <input type="password" class="form-control" id="password1" placeholder="Password">
+  </div>
+  <div class="form-group">
+    <label for="Password2">Confirm Password</label>
+    <input type="password" class="form-control" id="password2" placeholder="Password">
+  </div>
+  <button type="submit" id="signupSubmit" class="btn btn-success">Submit</button>
+</form>
+<a href="/login" id="redirect">Already have an account? Log in.</a>
+</div>
+</div>
+</div>
+<script>
+
+  $(document).ready(function () {
+    $("#signupSubmit").on("click", function (event) {
+      event.preventDefault();
+      var user = $("#email1").val().trim();
+      var pword = $("#password1").val().trim();
+      var pword2 = $("#password2").val().trim();
+      if (pword === pword2) {
+        $.ajax({
+          method: "POST",
+          url: "/api/users",
+          data: { username: user, password: pass }
+        }).then(function (data) {
+          window.location.replace("/dashboard");
+        })
+      } else {
+        // error passwords don't match
+        $(".warning").html("<h5>Error: Passwords do not match.</h5>");
+      }
+    });
+
+  })
+
+
+</script>
