@@ -9,15 +9,13 @@ body {
   color: white;
 }
 
-
-
 #smashBruddas {
   height: 200px;
   width: 200px;
 }
 
 #coolBackground {
-  background-image: url(../assets/images/SFV_Logo.png);
+  background-image: url(/assets/images/SFV_Logo.png);
   background-repeat: no-repeat;
   background-size: auto;
   background-position: 50%;
@@ -32,10 +30,6 @@ body {
 
 #navbarNavAltMarkup {
   margin-left: 70%;
-}
-
-.dynamicCard{
-  
 }
 
 .card-body {
@@ -70,6 +64,12 @@ body {
   background: #3c404e;
   color: white;
   opacity: 0.9;
+}
+
+.dynamicCard {
+  width: 400;
+  height: auto;
+  margin: 4px;
 }
 
 .form-group {
