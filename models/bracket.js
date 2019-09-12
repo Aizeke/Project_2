@@ -11,10 +11,7 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len:[1],
-          isIn: [
-            ['doubleElimination', 'singleElimination']
-          ]
+          len:[1]
         }
       },
       gameInfo: {

@@ -4,19 +4,7 @@ $(document).ready(function () {
   var input = '<input class="form-control" type="text" placeholder="Input Team Name: "></input>';
   $("#teamName").html(input);
 
-  // // Display Single Elimination Bracket
-  // $("#SEBtn").on("click", function () {
-
-  //   displaySingleElimination();
-  // })
-
-  // // Display Double Elimination Bracket
-  // $("#DEBtn").on("click", function () {
-
-  //   displayDoubleElimination();
-  // })
-
-  // Submit Form
+  
   $("submitBracket").on("click", function () {
 
 

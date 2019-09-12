@@ -8,6 +8,17 @@ module.exports = function (app) {
   // =============================================================
   // Get Brackets / Get Bracket by ID / Create New Bracket
   // =============================================================
+  app.get("/api/brackets/:id", function (req, res) {
+    db.Bracket.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.User]
+    }).then(function (dbResponse) {
+      res.json(dbResponse);
+    });
+  });
+
   app.get("/api/brackets", function (req, res) {
     db.Bracket.findAll({
       // include: [db.User]
@@ -17,7 +28,7 @@ module.exports = function (app) {
   });
 
   app.put("/api/brackets/:bracketId", function (req, res, next) {
-    Bracket.update(
+    db.Bracket.update(
       {
         bracketName: req.body.bracketName,
         bracketType: req.body.bracketType,
@@ -37,7 +48,7 @@ module.exports = function (app) {
     var userId = req.session.userId;
 
     var bracketType = req.body.bracketType;
-    var info = req.body.gameInfo;
+    var gameInfo = req.body.gameInfo;
     var bracketName = req.body.bracketName;
     var teamNames = JSON.parse(req.body.teamNames);
     var scores = JSON.parse(req.body.scores);
@@ -45,11 +56,11 @@ module.exports = function (app) {
     db.Bracket.create({
       bracketName: bracketName,
       bracketType: bracketType,
-      gameInfo: info,
+      gameInfo: gameInfo,
       teamNames: teamNames,
       scores: scores,
       // Send users sessions usingid
-      userId: userId
+      UserId: userId
     }).then(function (dbResponse) {
       console.log(dbResponse);
       res.json(dbResponse.dataValues.id);
@@ -69,12 +80,12 @@ module.exports = function (app) {
   });
 
   app.post("/api/users", (req, res) => {
-    var user = req.body.username;
+    var email = req.body.email;
     var pass = req.body.password;
     var displayName = req.body.displayName;
 
     db.User.create({
-      username: user,
+      email: email,
       displayName: displayName,
       password: pass
     })
@@ -83,7 +94,7 @@ module.exports = function (app) {
 
         req.session.initialized = true;
         req.session.userId = dbResponse.id;
-        req.session.username = dbResponse.username;
+        req.session.email = dbResponse.email;
         // redirect to user's dashboard
         res.redirect("/hosted-brackets");
       })
@@ -94,13 +105,13 @@ module.exports = function (app) {
   // =============================================================
 
   app.post("/login", function (req, res) {
-    var user = req.body.username;
+    var email = req.body.email;
     var pass = req.body.password;
 
     // Find Users in the database
     db.User.findAll({
       where: {
-        username: user,
+        email: email,
         password: pass
       }
     }).then(function (dbResponse) {
@@ -108,10 +119,10 @@ module.exports = function (app) {
         console.log("no user found");
         res.json(false);
       } else {
-        console.log("User " + req.session.username + "Found");
+        console.log("User " + req.session.email + "Found");
         req.session.initialized = true;
         req.session.userId = dbResponse[0].id;
-        req.session.username = dbResponse[0].username;
+        req.session.email = dbResponse[0].email;
 
         res.redirect("/dashboard");
       }
@@ -131,9 +142,9 @@ module.exports = function (app) {
   
   app.get("/dev/login", function (req, res) {
     req.session.initialized = true;
-    req.session.userId = "yourUserID";
-    req.session.username = "yourUserName";
-    req.session.displayName = "yourDisplayName"
+    req.session.userId = 1;
+    req.session.email = "Isaac";
+    req.session.displayName = "Aizeke"
     res.redirect("/");
   });
 };

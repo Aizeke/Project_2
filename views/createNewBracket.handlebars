@@ -2,6 +2,8 @@
     <div class="col-md-6">
         <div class="container createB">
             <h4 id="header4">Create New Bracket</h4>
+            <div class="warning">
+            </div>
             <form>
                 <div class="form-group">
                     <label for="tourneyName">Tournament Name</label>
@@ -23,17 +25,179 @@
                     <select class="form-control" id="gameType">
                         <option>Street Fighter V</option>
                         <option>Super Smash Bros. Ultimate</option>
-                        <option>CRinge of legends</option>
+                        <option>CRinge of Legends</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="tourneyDescription">Brief description of your event</label>
                     <textarea class="form-control" id="tourneyDescription" rows="4"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" id="submitNewBracket" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
+</div>
 
+<script>
 
-    
+    $(document).ready(function () {
+
+        $(".warning").html("");
+
+        $("#submitNewBracket").on("click", function (event) {
+            event.preventDefault();
+
+            var createNewBracket = {};
+
+            var bName = $("#tourneyName").val().trim();
+            var bType = $("#tourneyType").val().trim();
+            var bGame = $("#gameType").val().trim();
+            var bInfo = $("#tourneyDescription").val().trim();
+
+            if (bType === "Single Elimination") {
+                createNewBracket = {
+                    bracketName: bName,
+                    bracketType: bType,
+                    gameInfo: bInfo,
+                    teamNames: singleEliminationTeams,
+                    scores: singleEliminationScores
+                };
+            } else {
+                createNewBracket = {
+                    bracketName: bName,
+                    bracketType: bType,
+                    gameInfo: bInfo,
+                    teamNames: doubleEliminationTeams,
+                    scores: doubleEliminationScores
+                };
+            };
+
+            if (bName === "" && bType === "" && bGame === "" && bInfo === "") {
+                $(".warning").html("<h4>You Must Fill In All The Fields Before Submitting!</h4>");
+            } else {
+                $.ajax({
+                    method: "POST",
+                    url: "/api/brackets",
+                    data: createNewBracket
+                }).then(function (data) {
+                    console.log("bracket created");
+                    console.log(data + "\n=================================================");
+                    window.location.replace("/bracket/" + data);
+                });
+            };
+        });
+    });
+
+    var singleEliminationScores = function () {
+
+        var data = {
+            results: [
+                [
+                    [
+                        // Round 1
+                        [null, null],
+                        [null, null],
+                        [null, null],
+                        [null, null],
+                        [null, null],
+                        [null, null],
+                        [null, null],
+                        [null, null]
+                    ],
+                    // Round 2
+                    [
+                        [null, null],
+                        [null, null],
+                        [null, null],
+                        [null, null]
+                    ],
+                    // Round 3
+                    [
+                        [null, null],
+                        [null, null]
+                    ],
+                    // Round 4
+                    [
+                        [null, null]
+                    ]
+                ]
+            ]
+        };
+
+        return JSON.stringify(data);
+    }
+    var singleEliminationTeams = function () {
+
+        var data = {
+            teams: [
+                // First Match
+                [null, null],
+                [null, null],
+                [null, null],
+                [null, null],
+                [null, null],
+                [null, null],
+                [null, null],
+                [null, null]
+            ]
+        }
+        return JSON.stringify(data);
+    }
+
+    var doubleEliminationScores = function () {
+
+        var data = {
+            results: [[
+                // WINNER BRACKET
+                [
+                    [null, null],
+                    [null, null],
+                    [null, null],
+                    [null, null]
+                ],
+                // first and second matches of the first round
+                [
+                    [null, null],
+                    [null, null]
+                ],
+                // second round
+                [
+                    [null, null]
+                ]
+            ],
+            [
+                // LOSER BRACKET
+                [
+                    [null, null],
+                    [null, null],
+                    [null, null],
+                    [null, null]
+                ],
+                // first round
+                [
+                    [null, null],
+                    [null, null]
+                ],
+                // second round
+                [
+                    [null, null]
+                ]
+            ]]
+        };
+
+        return JSON.stringify(data);
+    };
+    var doubleEliminationTeams = function () {
+        var data = {
+            teams: [
+                [null, null],
+                [null, null],
+                [null, null],
+                [null, null]
+            ]
+        };
+
+        return JSON.stringify(data);
+    }
+
+</script>

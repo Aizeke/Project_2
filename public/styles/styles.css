@@ -69,3 +69,7 @@ body {
   margin: auto;
   justify-content: center;
 }
+
+.warning h4 {
+  color: maroon;
+}
