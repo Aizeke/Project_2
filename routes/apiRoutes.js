@@ -123,4 +123,17 @@ module.exports = function (app) {
       res.redirect("/");
     });
   });
+
+
+  // ====================
+  // DEV ROUTE LOGIN USER YOUR OWN LOGIN
+  // ====================
+  
+  app.get("/dev/login", function (req, res) {
+    req.session.initialized = true;
+    req.session.userId = "yourUserID";
+    req.session.username = "yourUserName";
+    req.session.displayName = "yourDisplayName"
+    res.redirect("/");
+  });
 };
