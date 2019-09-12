@@ -9,8 +9,8 @@ module.exports = function (app) {
     res.render("login");
   });
 
-  app.get("/register", (req, res) => {
-    res.render("register");
+  app.get("/signup", (req, res) => {
+    res.render("signup");
   });
 
   // ==========================================================
