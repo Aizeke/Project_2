@@ -1,11 +1,20 @@
 module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
-    username: {
+    email: {
       type: DataTypes.STRING,
-      allowNull: false,
+      unique: true,
+      required: true,
       validate: {
-        len: [1]
+        isEmail: true
       }
+    },
+    salt: DataTypes.STRING,
+    hash: DataTypes.STRING,
+    status: {
+      type: DataTypes.ENUM,
+      allowNull: false,
+      values: ['active', 'pending', 'inactive'],
+      defaultValue: 'pending'
     },
     displayName: {
       type: DataTypes.STRING,
@@ -14,13 +23,7 @@ module.exports = function (sequelize, DataTypes) {
         len: [1]
       }
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    }
+
   });
 
   // Users to their Brackets, on delete: delete assocated brackets too.

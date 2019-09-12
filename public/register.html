@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script></head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
+<body>
+    <form>
+        <div class="form-group">
+          <label for="Email1">Name</label>
+          <input type="text" class="form-control" id="personalName" aria-describedby="emailHelp" placeholder="">
+          <small id="email" class="form-text text-muted">Enter your email</small>
+        </div>
+        <div class="form-group">
+          <label for="Email1">Gamertag</label>
+          <input type="email" class="form-control" id="gamerName" aria-describedby="emailHelp" placeholder="">
+          <small id="diplayName" class="form-text text-muted">Enter your desired gamertag</small>
+        </div>
+      
+        <div class="form-group">
+          <label for="Password1">Password</label>
+          <input type="password" class="form-control" id="password1" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <label for="Password2">Confirm Password</label>
+          <input type="password" class="form-control" id="password2" placeholder="Password">
+        </div>
+        <button type="submit" id="signupSubmit" class="btn btn-success">Submit</button>
+      </form>
+      <a href="/login" id="redirect">Already have an account? Log in.</a>
+      </div>
+      </div>
+      </div>
+    <script src="./js/register.js"></script>
+</body>
+</html>
+

@@ -49,7 +49,7 @@ module.exports = function (app) {
         res.render("hostedBrackets", {
           initialized: req.session.initialized,
           userId: req.session.userId,
-          username: req.session.username,
+          email: req.session.email,
           brackets: dbResponse
         });
       });
@@ -67,7 +67,7 @@ module.exports = function (app) {
         res.render("bracket", {
           initialized: req.session.initialized,
           userId: req.session.userId,
-          username: req.session.username,
+          email: req.session.email,
           id: dbResponse.dataValues.id,
           bracketName: dbResponse.dataValues.bracketName,
           bracketType: dbResponse.dataValues.bracketType,
@@ -95,7 +95,7 @@ module.exports = function (app) {
       res.render("createNewBracket", {
         initialized: req.session.initialized,
         userId: req.session.userId,
-        username: req.session.username
+        email: req.session.email
       });
     } else {
       //
@@ -114,7 +114,7 @@ module.exports = function (app) {
       res.render("404", {
         initialized: req.session.initialized,
         userId: req.session.userId,
-        username: req.session.username
+        email: req.session.email
       });
     } else {
       res.render("404", {
