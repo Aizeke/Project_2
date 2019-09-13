@@ -28,6 +28,7 @@ module.exports = function (sequelize, DataTypes) {
   // Users to their Brackets, on delete: delete assocated brackets too.
   User.associate = function (models) {
     User.hasMany(models.Bracket, {
+      foreignKey: "UserId",
       onDelete: "cascade"
     })
   }

@@ -59,11 +59,11 @@ module.exports = function (app) {
       gameInfo: gameInfo,
       teamNames: teamNames,
       scores: scores,
-      // Send users sessions usingid
+      // Send users sessions using id
       UserId: userId
     }).then(function (dbResponse) {
       console.log(dbResponse);
-      res.json(dbResponse.dataValues.id);
+      res.redirect("/brackets/" + userId);
     });
   });
 
@@ -139,7 +139,7 @@ module.exports = function (app) {
   // ====================
   // DEV ROUTE LOGIN USER YOUR OWN LOGIN
   // ====================
-  
+
   app.get("/dev/login", function (req, res) {
     req.session.initialized = true;
     req.session.userId = 1;
