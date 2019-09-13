@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $("#signupSubmit").on("click", function (e) {
         var userInfo = {
-            email: $("#email").val().trim(),
+            username: $("#username").val().trim(),
             displayName: $("#diplayName").val().trim(),
             password: $("#password1").val().trim()
         }
