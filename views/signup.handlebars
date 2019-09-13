@@ -1,55 +1,33 @@
-<div class="warning">
-</div>
-
-<form>
-  <div class="form-group">
-    <label for="Email1">Name</label>
-    <input type="text" class="form-control" id="personalName" aria-describedby="emailHelp" placeholder="">
-    <small id="emailHelp" class="form-text text-muted">Enter name</small>
+<div class="container">
+  <div class="row vertical-offset-100">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Please log in</h3>
+        </div>
+        <div class="panel-body">
+          <form accept-charset="UTF-8" role="form">
+            <fieldset>
+              <div class="form-group">
+                <input class="form-control" placeholder="Username" name="email" type="text" id="username">
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Display Name" name="email" type="text" id="displayName">
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Password" name="password" type="password" value=""
+                  id="password1">
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Confirm Password" name="password2" type="password" value=""
+                  id="password2">
+              </div>
+              <input class="btn btn-lg btn-success btn-block" type="submit" value="Login" id="signupSubmit">
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="Email1">Gamertag</label>
-    <input type="email" class="form-control" id="gamerName" aria-describedby="emailHelp" placeholder="">
-    <small id="emailHelp" class="form-text text-muted">Enter your desired gamertag</small>
-  </div>
-
-  <div class="form-group">
-    <label for="Password1">Password</label>
-    <input type="password" class="form-control" id="password1" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="Password2">Confirm Password</label>
-    <input type="password" class="form-control" id="password2" placeholder="Password">
-  </div>
-  <button type="submit" id="signupSubmit" class="btn btn-success">Submit</button>
-</form>
-<a href="/login" id="redirect">Already have an account? Log in.</a>
 </div>
-</div>
-</div>
-<script>
-
-  $(document).ready(function () {
-    $("#signupSubmit").on("click", function (event) {
-      event.preventDefault();
-      var user = $("#email1").val().trim();
-      var pword = $("#password1").val().trim();
-      var pword2 = $("#password2").val().trim();
-      if (pword === pword2) {
-        $.ajax({
-          method: "POST",
-          url: "/api/users",
-          data: { username: user, password: pass }
-        }).then(function (data) {
-          window.location.replace("/dashboard");
-        })
-      } else {
-        // error passwords don't match
-        $(".warning").html("<h5>Error: Passwords do not match.</h5>");
-      }
-    });
-
-  })
-
-
-</script>
+<script src="../public/js/register.js"></script>
