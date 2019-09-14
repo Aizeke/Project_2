@@ -13,7 +13,7 @@ module.exports = function (app) {
       where: {
         id: req.params.id
       },
-      // include: [db.User]
+      include: [db.User]
     }).then(function (dbResponse) {
       res.json(dbResponse);
     });
@@ -62,10 +62,10 @@ module.exports = function (app) {
       teamNames: teamNames,
       scores: scores,
       // Send users sessions using id
-      // UserId: userId
+      UserId: userId
     }).then(function (dbResponse) {
       console.log(dbResponse);
-      res.redirect("/brackets");
+      res.redirect("/dashboard");
     });
   });
 
