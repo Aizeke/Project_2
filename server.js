@@ -12,26 +12,19 @@ const TWO_HOURS = 1000 * 60 * 60 * 2;
 
 var connection;
 
+const SESS_LOG_IN = {
+  PORT = 3000,
+
+  SESS_NAME = process.env.ID,
+  SESS_LIFTIME = TWO_HOURS,
+  SESS_SECRET = process.env.SECRET
+} = process.env;
+
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
-  connection.mysql.createConnection({
-    username: "root",
-    password: "%I_Met_The_Devil_In_Miami%",
-    database: "tournamentBracket_db",
-    host: "localhost"
-  })
+  SESS_LOG_IN;
 }
-
-  const {
-    PORT = 3000,
-
-    SESS_NAME = 'sid',
-    SESS_LIFTIME = TWO_HOURS,
-    SESS_SECRET = 'leaguebestgame'
-  } = process.env;
-
-
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
