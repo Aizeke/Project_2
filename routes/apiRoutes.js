@@ -8,12 +8,12 @@ module.exports = function (app) {
   // =============================================================
   // Get Brackets / Get Bracket by ID / Create New Bracket
   // =============================================================
-  app.get("/api/brackets/:id", function (req, res) {
+  app.get("/api/brackets/?:id", function (req, res) {
     db.Bracket.findOne({
       where: {
         id: req.params.id
       },
-      include: [db.User]
+      // include: [db.User]
     }).then(function (dbResponse) {
       res.json(dbResponse);
     });
@@ -53,6 +53,8 @@ module.exports = function (app) {
     var teamNames = JSON.parse(req.body.teamNames);
     var scores = JSON.parse(req.body.scores);
 
+    console.log(teamNames, scores);
+
     db.Bracket.create({
       bracketName: bracketName,
       bracketType: bracketType,
@@ -60,10 +62,10 @@ module.exports = function (app) {
       teamNames: teamNames,
       scores: scores,
       // Send users sessions using id
-      UserId: userId
+      // UserId: userId
     }).then(function (dbResponse) {
       console.log(dbResponse);
-      res.redirect("/brackets/" + userId);
+      res.redirect("/brackets");
     });
   });
 
@@ -112,7 +114,7 @@ module.exports = function (app) {
     db.User.findAll({
       where: {
         email: email,
-        password: pass
+        password: ""
       }
     }).then(function (dbResponse) {
       if (dbResponse.length === 0) {

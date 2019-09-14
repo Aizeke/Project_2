@@ -41,7 +41,7 @@ module.exports = function (sequelize, DataTypes) {
     Bracket.associate = function (models) {
       Bracket.belongsTo(models.User, {
         foreignKey: {
-          allowNull:false
+          allowNull:true
         }
       });
     };
