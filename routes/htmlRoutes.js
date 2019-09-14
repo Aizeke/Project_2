@@ -42,12 +42,12 @@ module.exports = function (app) {
   app.get("/hosted-brackets", function (req, res) {
 
     db.Bracket.findAll({
-      where: { bracketName: req.body.bracketName }
+      where: { UserId: req.session.userId }
     })
       .then(function (dbResponse) {
         res.render("hostedBrackets", {
           initialized: req.session.initialized,
-          // userId: req.session.userId,
+          userId: req.session.userId,
           username: req.session.username,
           brackets: dbResponse
         });
@@ -65,7 +65,7 @@ module.exports = function (app) {
         console.log(dbResponse.dataValues.teamNames[0])
         res.render("bracket", {
           initialized: req.session.initialized,
-          // userId: req.session.userId,
+          userId: req.session.userId,
           username: req.session.username,
           id: dbResponse.dataValues.id,
           bracketName: dbResponse.dataValues.bracketName,
@@ -90,21 +90,21 @@ module.exports = function (app) {
   // Sends Create Bracket html
   app.get("/create-bracket", function (req, res) {
 
-    // if (req.session.initialized) {
+    if (req.session.initialized) {
       res.render("createNewBracket", {
         initialized: req.session.initialized,
-        // userId: req.session.userId,
+        userId: req.session.userId,
         username: req.session.username
       });
-    // } else {
+    } else {
       //
       // ROUTE THE USER TO THE LOGIN
       //
       //
-      // res.render("login", {
-        // msg: "You Need To Be Logged In To Make A Bracket!"
-    //   });
-    // };
+      res.render("login", {
+        msg: "You Need To Be Logged In To Make A Bracket!"
+      });
+    };
   });
 
   // Render 404 page for any unmatched routes
