@@ -61,7 +61,8 @@ app.use(session({
 
 if (app.get('env') === 'production') {
   app.set('trust proxy', 1) // trust first proxy
-  sess.cookie.secure = true // serve secure cookies
+  session.cookie.secure = true
+  // session.cookie.secure = true // serve secure cookies
 }
 
 // Routes
