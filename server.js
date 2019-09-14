@@ -53,16 +53,19 @@ app.use(session({
     sameSite: true,
     secure: false
   },
-  secret: SESS_SECRET
+  secret: process.env.SECRET
 }));
 
 // ===========================================================================
 // ===========================================================================
+var sess = {
+  secret: process.env.SECRET,
+  cookie: { secure: false }
+}
 
 if (app.get('env') === 'production') {
   app.set('trust proxy', 1) // trust first proxy
-  session.cookie.secure = true
-  // session.cookie.secure = true // serve secure cookies
+  sess.cookie.secure = true // serve secure cookies
 }
 
 // Routes
